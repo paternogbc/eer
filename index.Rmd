@@ -1,0 +1,17 @@
+--- 
+title: "Ecologia Ecolutiva em R"
+author: "Gustavo Brant Paterno"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "Material didádico e tutoriais em R para a disciplina de Ecologia Evolutiva do Programa de Pós-graduação em Ecologia - UFRN"
+---
+
+# Sobre o livro
+
+Este livro é um projeto aberto e livre. 

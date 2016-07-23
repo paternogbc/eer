@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ecologia Ecolutiva em R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="Material didádico e tutoriais em R para a disciplina de Ecologia Evolutiva do Programa de Pós-graduação em Ecologia - UFRN">
+  <meta name="generator" content="bookdown 0.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Ecologia Ecolutiva em R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Material didádico e tutoriais em R para a disciplina de Ecologia Evolutiva do Programa de Pós-graduação em Ecologia - UFRN" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ecologia Ecolutiva em R" />
+  
+  <meta name="twitter:description" content="Material didádico e tutoriais em R para a disciplina de Ecologia Evolutiva do Programa de Pós-graduação em Ecologia - UFRN" />
+  
+
+<meta name="author" content="Gustavo Brant Paterno">
+
+<meta name="date" content="2016-07-23">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="pacotes.html">
+<link rel="next" href="methods.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Ecologia Evolutiva em R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre o livro</a></li>
+<li class="chapter" data-level="2" data-path="pacotes.html"><a href="pacotes.html"><i class="fa fa-check"></i><b>2</b> Pacotes necessários</a></li>
+<li class="chapter" data-level="3" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html"><i class="fa fa-check"></i><b>3</b> Árvores filognéticas</a><ul>
+<li class="chapter" data-level="3.1" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#como-carregar-um-arvore-filogenetica-no-r"><i class="fa fa-check"></i><b>3.1</b> Como carregar um árvore filogenética no R?</a></li>
+<li class="chapter" data-level="3.2" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#como-visualizar-a-arvore"><i class="fa fa-check"></i><b>3.2</b> Como visualizar a árvore</a></li>
+<li class="chapter" data-level="3.3" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#caracteristicas-da-sua-arvore"><i class="fa fa-check"></i><b>3.3</b> Características da sua árvore</a></li>
+<li class="chapter" data-level="3.4" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#existem-politomias-na-minha-arvore"><i class="fa fa-check"></i><b>3.4</b> Existem politomias na minha árvore?</a></li>
+<li class="chapter" data-level="3.5" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#como-remover-umavarias-especies-da-arvore"><i class="fa fa-check"></i><b>3.5</b> Como remover uma/várias espécies da árvore?</a></li>
+<li class="chapter" data-level="3.6" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#exporte-sua-arvore"><i class="fa fa-check"></i><b>3.6</b> Exporte sua arvore</a></li>
+<li class="chapter" data-level="3.7" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#como-criar-um-arvore-filogenetica-manualmente"><i class="fa fa-check"></i><b>3.7</b> Como criar um árvore filogenética manualmente?</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/paternogbc/eer" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Ecologia Ecolutiva em R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="arvores-filogneticas" class="section level1">
+<h1><span class="header-section-number">3</span> Árvores filognéticas</h1>
+<p>Pacotes necessários neste capítulo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ape)</code></pre></div>
+<div id="como-carregar-um-arvore-filogenetica-no-r" class="section level2">
+<h2><span class="header-section-number">3.1</span> Como carregar um árvore filogenética no R?</h2>
+<p>A função <code>read.tree()</code> pode ser utilizada para ler árvores no formato <a href="https://en.wikipedia.org/wiki/Newick_format">Newick</a>. Utilize o argumento <code>file</code> para indicar o local do arquivo. No exemplo abaixo, o arquivo <strong>arvore.tre</strong> está dentro da pasta <em>filogenia</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">arvore &lt;-<span class="st"> </span><span class="kw">read.tree</span>(<span class="dt">file =</span> <span class="st">&quot;filogenia/arvore.tre&quot;</span>)</code></pre></div>
+<p>Confira se a árvore foi carregada corretamente (número de espécies, número de nós, nome das espécies, se a árvore é enraizada e se possui informações sobre o comprimento dos ramos)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">arvore</code></pre></div>
+<pre><code>## 
+## Phylogenetic tree with 71 tips and 62 internal nodes.
+## 
+## Tip labels:
+##  Catoptrophorus_semipalmatus, Tringa_ochropus, Tringa_stagnatilis, Tringa_flavipes, Tringa_nebularia, Tringa_totanus, ...
+## 
+## Rooted; includes branch lengths.</code></pre>
+</div>
+<div id="como-visualizar-a-arvore" class="section level2">
+<h2><span class="header-section-number">3.2</span> Como visualizar a árvore</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(arvore, <span class="dt">cex =</span> .<span class="dv">5</span>)                <span class="co"># cex regula o tamanho da fonte </span></code></pre></div>
+<p><img src="eer_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(arvore, <span class="dt">show.tip.label =</span> F)      <span class="co"># esconde os nomes as espécies</span></code></pre></div>
+<p><img src="eer_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(arvore, <span class="dt">type =</span> <span class="st">&quot;fan&quot;</span>, <span class="dt">cex =</span> .<span class="dv">5</span>)  <span class="co"># Plota uma árvore circular</span></code></pre></div>
+<p><img src="eer_files/figure-html/unnamed-chunk-5-3.png" width="672" /></p>
+</div>
+<div id="caracteristicas-da-sua-arvore" class="section level2">
+<h2><span class="header-section-number">3.3</span> Características da sua árvore</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Veja a lista de espécies da sua árvore:</span>
+arvore$tip.label</code></pre></div>
+<pre><code>##  [1] &quot;Catoptrophorus_semipalmatus&quot; &quot;Tringa_ochropus&quot;            
+##  [3] &quot;Tringa_stagnatilis&quot;          &quot;Tringa_flavipes&quot;            
+##  [5] &quot;Tringa_nebularia&quot;            &quot;Tringa_totanus&quot;             
+##  [7] &quot;Tringa_erythropus&quot;           &quot;Tringa_melanoleuca&quot;         
+##  [9] &quot;Tringa_glareola&quot;             &quot;Steganopus_tricolor&quot;        
+## [11] &quot;Phalaropus_lobatus&quot;          &quot;Phalaropus_fulicaria&quot;       
+## [13] &quot;Micropalama_himantopus&quot;      &quot;Eurynorhynchus_pygmeus&quot;     
+## [15] &quot;Aphriza_virgata&quot;             &quot;Calidris_canutus&quot;           
+## [17] &quot;Calidris_tenuirostris&quot;       &quot;Calidris_temminckii&quot;        
+## [19] &quot;Calidris_maritima&quot;           &quot;Calidris_ptilocnemis&quot;       
+## [21] &quot;Calidris_mauri&quot;              &quot;Calidris_alba&quot;              
+## [23] &quot;Calidris_alpina&quot;             &quot;Calidris_bairdii&quot;           
+## [25] &quot;Calidris_minutilla&quot;          &quot;Calidris_pusilla&quot;           
+## [27] &quot;Calidris_minuta&quot;             &quot;Calidris_ruficollis&quot;        
+## [29] &quot;Calidris_subminuta&quot;          &quot;Arenaria_interpres&quot;         
+## [31] &quot;Arenaria_melanocephala&quot;      &quot;Tringa_hypoleucos&quot;          
+## [33] &quot;Tringa_macularia&quot;            &quot;Limnodromus_griseus&quot;        
+## [35] &quot;Gallinago_gallinago&quot;         &quot;Coenocorypha_aucklandica&quot;   
+## [37] &quot;Coenocorypha_pusilla&quot;        &quot;Limosa_fedoa&quot;               
+## [39] &quot;Limosa_haemastica&quot;           &quot;Limosa_limosa&quot;              
+## [41] &quot;Limosa_lapponica&quot;            &quot;Bartramia_longicauda&quot;       
+## [43] &quot;Numenius_tahitiensis&quot;        &quot;Numenius_phaeopus&quot;          
+## [45] &quot;Numenius_arquata&quot;            &quot;Numenius_americanus&quot;        
+## [47] &quot;Rostratula_benghalensis&quot;     &quot;Jacana_spinosa&quot;             
+## [49] &quot;Jacana_jacana&quot;               &quot;Metopidius_indicus&quot;         
+## [51] &quot;Actophilornis_africanus&quot;     &quot;Pedionomus_torquatus&quot;       
+## [53] &quot;Pluvialis_apricaria&quot;         &quot;Pluvialis_dominica&quot;         
+## [55] &quot;Eudromias_morinellus&quot;        &quot;Charadrius_montanus&quot;        
+## [57] &quot;Charadrius_vociferus&quot;        &quot;Charadrius_wilsonia&quot;        
+## [59] &quot;Charadrius_dubius&quot;           &quot;Charadrius_hiaticula&quot;       
+## [61] &quot;Charadrius_melodus&quot;          &quot;Vanellus_vanellus&quot;          
+## [63] &quot;Vanellus_lugubris&quot;           &quot;Vanellus_armatus&quot;           
+## [65] &quot;Recurvirostra_avosetta&quot;      &quot;Haematopus_longirostris&quot;    
+## [67] &quot;Haematopus_fuliginosus&quot;      &quot;Haematopus_moquini&quot;         
+## [69] &quot;Haematopus_ostralegus&quot;       &quot;Haematopus_unicolor&quot;        
+## [71] &quot;Haematopus_finschi&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Veja o comprimento dos ramos:</span>
+arvore$edge.length</code></pre></div>
+<pre><code>##   [1] 18.072 13.400 13.400  2.600  2.300  9.900  2.499 19.701  0.615 19.086
+##  [11]  2.210  3.114 13.762 13.762 13.762 13.762  8.438  5.324  5.324 16.876
+##  [21] 18.780  3.420  1.262  2.158  2.158  5.400  9.287 17.413 17.413 11.394
+##  [31]  6.019  2.221  3.798  3.798  7.400 10.013  0.436  6.989  2.588  2.588
+##  [41]  0.435  9.142  0.435  8.707  0.436  0.435  7.836  0.436  7.400  0.435
+##  [51]  6.965  3.482  3.483  3.483  5.662  2.609  2.609 21.020  5.680  5.680
+##  [61] 26.321  5.779  5.779 10.600 23.800  1.000 22.800 17.890  4.910  4.910
+##  [71] 25.261 11.739  2.436  9.303  3.434  5.869  5.869 30.101 20.299  5.430
+##  [81] 14.869  4.719 10.150  3.746  6.404  6.404 11.700  8.800 43.300 10.900
+##  [91] 21.600 10.800 10.800 12.555 19.845 19.845 52.100 49.072  1.033 23.437
+## [101]  8.330  8.330  2.067  3.000 26.700  3.708 22.992  7.417 10.027  5.548
+## [111]  5.548  2.693 12.882  4.089  8.793  8.793  6.739 22.961 22.961 22.961
+## [121] 13.700 19.100  4.283 14.817  1.968 12.849  1.777 11.072  6.789  4.283
+## [131]  4.283 11.072</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Como verificar se a árvore é ultramétrica?</span>
+<span class="kw">is.ultrametric</span>(arvore)</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Como verificar se a árvore é enraizada?</span>
+<span class="kw">is.rooted</span>(arvore)</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Se a árvore não tiver nome nos nós (nodes), utilize essa função para criar nomes para os nós</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">arvore$node.label</code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">arvore &lt;-<span class="st"> </span><span class="kw">makeNodeLabel</span>(arvore) 
+
+<span class="co"># Veja que agora os nós possuem um nome:</span>
+arvore$node.label</code></pre></div>
+<pre><code>##  [1] &quot;Node1&quot;  &quot;Node2&quot;  &quot;Node3&quot;  &quot;Node4&quot;  &quot;Node5&quot;  &quot;Node6&quot;  &quot;Node7&quot; 
+##  [8] &quot;Node8&quot;  &quot;Node9&quot;  &quot;Node10&quot; &quot;Node11&quot; &quot;Node12&quot; &quot;Node13&quot; &quot;Node14&quot;
+## [15] &quot;Node15&quot; &quot;Node16&quot; &quot;Node17&quot; &quot;Node18&quot; &quot;Node19&quot; &quot;Node20&quot; &quot;Node21&quot;
+## [22] &quot;Node22&quot; &quot;Node23&quot; &quot;Node24&quot; &quot;Node25&quot; &quot;Node26&quot; &quot;Node27&quot; &quot;Node28&quot;
+## [29] &quot;Node29&quot; &quot;Node30&quot; &quot;Node31&quot; &quot;Node32&quot; &quot;Node33&quot; &quot;Node34&quot; &quot;Node35&quot;
+## [36] &quot;Node36&quot; &quot;Node37&quot; &quot;Node38&quot; &quot;Node39&quot; &quot;Node40&quot; &quot;Node41&quot; &quot;Node42&quot;
+## [43] &quot;Node43&quot; &quot;Node44&quot; &quot;Node45&quot; &quot;Node46&quot; &quot;Node47&quot; &quot;Node48&quot; &quot;Node49&quot;
+## [50] &quot;Node50&quot; &quot;Node51&quot; &quot;Node52&quot; &quot;Node53&quot; &quot;Node54&quot; &quot;Node55&quot; &quot;Node56&quot;
+## [57] &quot;Node57&quot; &quot;Node58&quot; &quot;Node59&quot; &quot;Node60&quot; &quot;Node61&quot; &quot;Node62&quot;</code></pre>
+</div>
+<div id="existem-politomias-na-minha-arvore" class="section level2">
+<h2><span class="header-section-number">3.4</span> Existem politomias na minha árvore?</h2>
+<p>Se a sua árvore não tiver politomias, o número de nós dever ser igual ao número de espécies -1. Se isso não ocorrer, sua árvore possue politomias:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Nnode &lt;-<span class="st"> </span>arvore$Nnode               <span class="co"># Número de nós</span>
+Nsp   &lt;-<span class="st"> </span><span class="kw">length</span>(arvore$tip.label)   <span class="co"># Número de espécies</span>
+<span class="co"># Existem politomias na minha árvore?</span>
+Nnode ==<span class="st"> </span>(Nsp -<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Quantas politomias existem na minha árvore?</span>
+(Nsp -<span class="dv">1</span>) -<span class="st"> </span>Nnode</code></pre></div>
+<pre><code>## [1] 8</code></pre>
+</div>
+<div id="como-remover-umavarias-especies-da-arvore" class="section level2">
+<h2><span class="header-section-number">3.5</span> Como remover uma/várias espécies da árvore?</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">drop.tip</span>(arvore, arvore$tip.label[<span class="dv">1</span>])   <span class="co"># remove a primeira espécies da árvore</span></code></pre></div>
+<pre><code>## 
+## Phylogenetic tree with 70 tips and 61 internal nodes.
+## 
+## Tip labels:
+##  Tringa_ochropus, Tringa_stagnatilis, Tringa_flavipes, Tringa_nebularia, Tringa_totanus, Tringa_erythropus, ...
+## Node labels:
+##  Node1, Node2, Node3, Node4, Node5, Node6, ...
+## 
+## Rooted; includes branch lengths.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">drop.tip</span>(arvore, arvore$tip.label[<span class="dv">1</span>:<span class="dv">5</span>]) <span class="co"># remove as cinco primeiras espécies</span></code></pre></div>
+<pre><code>## 
+## Phylogenetic tree with 66 tips and 60 internal nodes.
+## 
+## Tip labels:
+##  Tringa_totanus, Tringa_erythropus, Tringa_melanoleuca, Tringa_glareola, Steganopus_tricolor, Phalaropus_lobatus, ...
+## Node labels:
+##  Node1, Node2, Node3, Node4, Node5, Node6, ...
+## 
+## Rooted; includes branch lengths.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">drop.tip</span>(arvore, <span class="st">&quot;Tringa_glareola&quot;</span>)     <span class="co"># remove a espécies &quot;Tringa_glareola&quot;</span></code></pre></div>
+<pre><code>## 
+## Phylogenetic tree with 70 tips and 61 internal nodes.
+## 
+## Tip labels:
+##  Catoptrophorus_semipalmatus, Tringa_ochropus, Tringa_stagnatilis, Tringa_flavipes, Tringa_nebularia, Tringa_totanus, ...
+## Node labels:
+##  Node1, Node2, Node3, Node4, Node5, Node6, ...
+## 
+## Rooted; includes branch lengths.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Como cortar um node da árvore (nó)?</span>
+<span class="kw">extract.clade</span>(<span class="dt">phy =</span> arvore, <span class="dt">node =</span> <span class="st">&quot;Node61&quot;</span>) <span class="co"># remove o nó 61</span></code></pre></div>
+<pre><code>## 
+## Phylogenetic tree with 4 tips and 2 internal nodes.
+## 
+## Tip labels:
+## [1] &quot;Haematopus_moquini&quot;    &quot;Haematopus_ostralegus&quot; &quot;Haematopus_unicolor&quot;  
+## [4] &quot;Haematopus_finschi&quot;   
+## Node labels:
+## [1] &quot;Node61&quot; &quot;Node62&quot;
+## 
+## Unrooted; includes branch lengths.</code></pre>
+</div>
+<div id="exporte-sua-arvore" class="section level2">
+<h2><span class="header-section-number">3.6</span> Exporte sua arvore</h2>
+<p>Depois de remover as espécies que deseja, você pode salvar a árvore em um novo objeto:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">arvore2 &lt;-<span class="st"> </span><span class="kw">drop.tip</span>(arvore, <span class="kw">c</span>(<span class="st">&quot;Tringa_glareola&quot;</span>, <span class="st">&quot;Haematopus_ostralegus&quot;</span>))
+arvore2   <span class="co"># perceba que agora a árvore possui 69 espécies (em vez de 71)</span></code></pre></div>
+<pre><code>## 
+## Phylogenetic tree with 69 tips and 60 internal nodes.
+## 
+## Tip labels:
+##  Catoptrophorus_semipalmatus, Tringa_ochropus, Tringa_stagnatilis, Tringa_flavipes, Tringa_nebularia, Tringa_totanus, ...
+## Node labels:
+##  Node1, Node2, Node3, Node4, Node5, Node6, ...
+## 
+## Rooted; includes branch lengths.</code></pre>
+<p>Para exportar a árvore em formato Newwick, utilize a função ‘write.tree()’</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.tree</span>(<span class="dt">phy =</span> arvore2, <span class="dt">file =</span> <span class="st">&quot;arvore2.tre&quot;</span>)</code></pre></div>
+</div>
+<div id="como-criar-um-arvore-filogenetica-manualmente" class="section level2">
+<h2><span class="header-section-number">3.7</span> Como criar um árvore filogenética manualmente?</h2>
+<pre><code>## 
+## Phylogenetic tree with 3 tips and 2 internal nodes.
+## 
+## Tip labels:
+## [1] &quot;specie_A&quot;  &quot;specie_B&quot;  &quot;especie_C&quot;
+## 
+## Rooted; includes branch lengths.</code></pre>
+<p><img src="eer_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="pacotes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="methods.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/paternogbc/eer/edit/master/02-manipule_arvores.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
