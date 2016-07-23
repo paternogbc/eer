@@ -2,13 +2,12 @@
 
 Para rodar todos os exemplos do livro é necessário instalar estes pacotes:
 
-```{r eval=F}
+```{r pkgs, eval=FALSE}
 install.packages("ape")
 install.packages("phytools")
 install.packages("picante")
 install.packages("caper")
 install.packages("phylolm")
-install.packages("devtools")
 install.packages("sensiPhy")
 ```
 

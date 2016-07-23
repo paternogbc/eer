@@ -93,12 +93,12 @@ arvore2   # perceba que agora a árvore possui 69 espécies (em vez de 71)
 ```
 
 Para exportar a árvore em formato Newwick, utilize a função 'write.tree()'
-```{r eval=F}
+```{r export, eval=FALSE}
 write.tree(phy = arvore2, file = "arvore2.tre")
 ```
 
 ## Como criar um árvore filogenética manualmente?
-```{r echo=F}
+```{r echo=FALSE}
 ### Formato Newwick: 
 sp <- "((specie_A:5, specie_B:5):15, especie_C:20);"
 
