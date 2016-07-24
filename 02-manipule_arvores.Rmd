@@ -5,7 +5,7 @@ Pacotes necessários neste capítulo:
 library(ape)
 ```
 
-## Como carregar um árvore filogenética no R?
+## Carregar
 
 A função `read.tree()` pode ser utilizada para ler árvores no formato [Newick](https://en.wikipedia.org/wiki/Newick_format). Utilize o argumento `file` para 
 indicar o local do arquivo. No exemplo abaixo, o arquivo __arvore.tre__ está dentro da pasta 
@@ -23,19 +23,22 @@ possui informações sobre o comprimento dos ramos)
 arvore
 ```
 
-## Como visualizar a árvore
+## Visualizar
+A função `plot()` pode ser utilizada para visualizar sua árvore filogenética. 
 ```{r}
 plot(arvore, cex = .5)                # cex regula o tamanho da fonte 
 plot(arvore, show.tip.label = F)      # esconde os nomes as espécies
 plot(arvore, type = "fan", cex = .5)  # Plota uma árvore circular
 ```
 
-## Características da sua árvore
+## Características  
+Árvores filogenéticas são objetos da classe 'phylo' estruturados em uma lista.
+
 
 ```{r}
+names(arvore)
 # Veja a lista de espécies da sua árvore:
 arvore$tip.label
-
 # Veja o comprimento dos ramos:
 arvore$edge.length
 
@@ -57,7 +60,7 @@ arvore <- makeNodeLabel(arvore)
 arvore$node.label
 ```
 
-##  Existem politomias na minha árvore?
+##  Politomias
 
 Se a sua árvore não tiver politomias, o número de nós dever ser igual ao
 número de espécies -1. Se isso não ocorrer, sua árvore possue politomias:
@@ -66,7 +69,7 @@ número de espécies -1. Se isso não ocorrer, sua árvore possue politomias:
 Nnode <- arvore$Nnode               # Número de nós
 Nsp   <- length(arvore$tip.label)   # Número de espécies
 # Existem politomias na minha árvore?
-Nnode == (Nsp -1)
+Nnode != (Nsp -1)
 
 # Quantas politomias existem na minha árvore?
 (Nsp -1) - Nnode
@@ -83,7 +86,7 @@ drop.tip(arvore, "Tringa_glareola")     # remove a espécies "Tringa_glareola"
 extract.clade(phy = arvore, node = "Node61") # remove o nó 61
 ```
 
-## Exporte sua arvore
+## Salvar e Exportar
 
 Depois de remover as espécies que deseja, você pode salvar a árvore em um novo objeto:
 
@@ -92,22 +95,32 @@ arvore2 <- drop.tip(arvore, c("Tringa_glareola", "Haematopus_ostralegus"))
 arvore2   # perceba que agora a árvore possui 69 espécies (em vez de 71)
 ```
 
-Para exportar a árvore em formato Newwick, utilize a função 'write.tree()'
+Para exportar a árvore em formato Newwick, utilize a função `write.tree()`
 ```{r export, eval=FALSE}
 write.tree(phy = arvore2, file = "arvore2.tre")
 ```
 
 ## Como criar um árvore filogenética manualmente?
-```{r echo=FALSE}
+```{r}
 ### Formato Newwick: 
 sp <- "((specie_A:5, specie_B:5):15, especie_C:20);"
+sp2 <- "((specie_A:2, specie_B:2):18, (especie_C:14, especie_D:14):6);"
 
 ### Exporta a árvore:
-cat(sp, file = "filogenia/exemplo.tre", sep = "\n")
+cat(sp, file = "filogenia/exemplo1.tre", sep = "\n")
+cat(sp2, file = "filogenia/exemplo2.tre", sep = "\n")
+
 ### Carrega a árvore:
-arv.exemplo <- read.tree("filogenia/exemplo.tre")
-arv.exemplo
-plot(arv.exemplo)
+arv.exemplo1<- read.tree("filogenia/exemplo1.tre")
+arv.exemplo2 <- read.tree("filogenia/exemplo2.tre")
+
+arv.exemplo1
+arv.exemplo2
+```
+
+```{r fig.show = 'hold', out.width = '50%'}
+plot(arv.exemplo1)
+plot(arv.exemplo2)
 ```
 
 

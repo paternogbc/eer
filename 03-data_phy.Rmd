@@ -1,0 +1,148 @@
+# Cruzar dados e filogenia 
+
+Pacotes necessários neste capítulo:
+```{r, message=FALSE, warning=FALSE}
+library(ape)
+library(caper)
+library(geiger)
+library(sensiPhy)
+```
+
+Carregando dados e Filogenia
+```{r}
+# Carregar árvore filogenética: 
+arvore <- read.tree("filogenia/arvore.tre")
+
+# Carregar banco de dados:
+dados <- read.csv("dados/dados.csv")
+
+# Confira as variáveis do banco de dados:
+str(dados)
+knitr::kable(head(dados))
+```
+
+Este banco de dados faz parte do pacote 'caper'. Para saber mais detalhes sobre 
+o banco de dados e a filogenia digite no console `?shorebird`
+
+## Manualmente
+Primeiro associe o nome das espécies ao nome das linhas no bando de dados:
+```{r}
+rownames(dados) <- dados$Species
+head(dados)
+```
+
+Primeiro utilize a função `name.check` para verificar se as espécies presentes no 
+banco de dados estão na filogenia e se as espécies presentes na filogenia 
+estão no banco de dados. Ok representa que os dados batem perfeitamente com a filogenia
+
+```{r}
+name.check(arvore, dados) 
+```
+
+Caso alguma espécie da tabela de dados não esteja na filogenia ou
+alguma espécie da filogenia não estaje no bando de dados, esta função irá
+mostrar quais são essas espécies. Veja o exemplo abaixo (removendo uma 
+espécie da filogenia e uma espécie do bando de dados)
+
+```{r}
+# Sem a espécie "Catoptrophorus_semipalmatus" na filogenia:
+name.check(drop.tip(arvore, "Catoptrophorus_semipalmatus"), dados)
+
+```
+
+```{r}
+# Sem a espécie "Catoptrophorus_semipalmatus" nos dados:
+name.check(arvore, dados[dados$Species != "Catoptrophorus_semipalmatus", ])
+```
+
+Caso o seu banco de dados ou filogenia tenham espécies não congruentes,
+você precisa cortar essas espécies do banco de dados e/ou da filogenia:
+Os passos a seguir garantem que os dados e a filogenia estejam congruentes.
+Apenas utilize esses passos caso `name.check()` não der "OK".
+
+Para ilustrar, vamos criar o banco de dados e uma árvore com alumas espécies 
+faltando:
+```{r}
+arvore2    <- drop.tip(arvore, 1:4) # Remove espécies de 1:4 da árvore
+dados2     <- dados[-(1:7), ]       # Remove espécies de 1:7 do bando de dados
+```
+
+`name.check()` para detectar as diferenças:
+```{r}
+nao.cruza  <- name.check(arvore2, dados2)
+nao.cruza # Veja o que está faltando na filogenia e no banco de dados:
+```
+
+Espécies presentes em ambos (dados/filogenia): 
+```{r results='hide'}
+ambos <- intersect(dados2$Species, arvore2$tip.label)
+ambos
+```
+
+
+União das espécies que não cruzam simultaneamente na árvore e nos dados:
+```{r}
+remover <- c(nao.cruza$tree_not_data, nao.cruza$data_not_tree)
+remover
+# Quantas espécies serão removidas?
+length(remover)
+# Quantas espécies serão mantidas na filogenia e nos dados:
+length(ambos)
+```
+
+Agora sabemos quais espécies terão que ser excluídas da filogenia e do banco
+de dados para deixar ambos perfeitamente alinhados. Vamos remover estas espécies.
+```{r}
+# Corta espécies da árvore:
+arvore2 <- drop.tip(arvore2, remover)
+# Corta espécies dos dados:
+dados2 <- dados2[!dados2$Species %in% remover, ] 
+# Verifica se deu certo:
+name.check(arvore2, dados2)
+```
+
+Por fim, verifique se a ordem das espécies é a mesma no banco de dados
+e na filogenia:
+```{r}
+sum(dados2$Species == arvore2$tip.label) == length(dados2$Species)
+```
+
+Se der "FALSE" é pq a ordem das espécies não é extamente a mesma entre 
+filogenia e os dados. 
+
+Para colocar filogenia e dados na mesma ordem:
+```{r}
+# Ordenando a ordem das espécies no banco de dados
+tip.order <- match(arvore2$tip.label, rownames(dados2))
+dados2 <- dados2[tip.order, ]
+# Agora repita o teste (tem que dar "TRUE")
+sum(dados2$Species == arvore2$tip.label) == length(dados2$Species)
+```
+
+## Pacote caper
+
+O pacote 'caper' possui a função `comparative.data()` que serve para juntar os dados 
+e a filogenia em um único objeto. Essa função __garante__ que apenas espécies presentes na
+filogenia e nos dados serão mantidas no objeto final. 
+
+
+```{r}
+## Utilizando a árvore original:
+comp.dados <- comparative.data(arvore, dados, 'Species')
+print(comp.dados)
+## Com o exemplo criado na seção acima (arvore2; dados 2)
+comp.dados2 <- comparative.data(arvore2, dados2, 'Species')
+print(comp.dados2)
+```
+Perceba que o objeto 'comp.dados2' possui apenas __60 espécies__ na filogenia e no banco de dados,
+o mesmo número de espécies que conseguimos manualmente.
+
+Para acessar o banco de dados:
+```{r results='hide'}
+comp.dados$data
+```
+
+Para acessar a filogenia:
+```{r results='hide'}
+comp.dados$phy
+```

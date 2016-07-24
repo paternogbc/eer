@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ecologia Ecolutiva em R</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="Material didádico e tutoriais em R para a disciplina de Ecologia Evolutiva do Programa de Pós-graduação em Ecologia - UFRN">
+  <meta name="generator" content="bookdown 0.1 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Ecologia Ecolutiva em R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Material didádico e tutoriais em R para a disciplina de Ecologia Evolutiva do Programa de Pós-graduação em Ecologia - UFRN" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Ecologia Ecolutiva em R" />
+  
+  <meta name="twitter:description" content="Material didádico e tutoriais em R para a disciplina de Ecologia Evolutiva do Programa de Pós-graduação em Ecologia - UFRN" />
+  
+
+<meta name="author" content="Gustavo Brant Paterno">
+
+<meta name="date" content="2016-07-24">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="arvores-filogneticas.html">
+<link rel="next" href="plotar-caracteristicas-na-filogenia.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Ecologia Evolutiva em R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre o livro</a></li>
+<li class="chapter" data-level="2" data-path="pacotes.html"><a href="pacotes.html"><i class="fa fa-check"></i><b>2</b> Pacotes necessários</a></li>
+<li class="chapter" data-level="3" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html"><i class="fa fa-check"></i><b>3</b> Árvores filognéticas</a><ul>
+<li class="chapter" data-level="3.1" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#carregar"><i class="fa fa-check"></i><b>3.1</b> Carregar</a></li>
+<li class="chapter" data-level="3.2" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#visualizar"><i class="fa fa-check"></i><b>3.2</b> Visualizar</a></li>
+<li class="chapter" data-level="3.3" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#caracteristicas"><i class="fa fa-check"></i><b>3.3</b> Características</a></li>
+<li class="chapter" data-level="3.4" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#politomias"><i class="fa fa-check"></i><b>3.4</b> Politomias</a></li>
+<li class="chapter" data-level="3.5" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#como-remover-umavarias-especies-da-arvore"><i class="fa fa-check"></i><b>3.5</b> Como remover uma/várias espécies da árvore?</a></li>
+<li class="chapter" data-level="3.6" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#salvar-e-exportar"><i class="fa fa-check"></i><b>3.6</b> Salvar e Exportar</a></li>
+<li class="chapter" data-level="3.7" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#como-criar-um-arvore-filogenetica-manualmente"><i class="fa fa-check"></i><b>3.7</b> Como criar um árvore filogenética manualmente?</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cruzar-dados-e-filogenia.html"><a href="cruzar-dados-e-filogenia.html"><i class="fa fa-check"></i><b>4</b> Cruzar dados e filogenia</a><ul>
+<li class="chapter" data-level="4.1" data-path="cruzar-dados-e-filogenia.html"><a href="cruzar-dados-e-filogenia.html#manualmente"><i class="fa fa-check"></i><b>4.1</b> Manualmente</a></li>
+<li class="chapter" data-level="4.2" data-path="cruzar-dados-e-filogenia.html"><a href="cruzar-dados-e-filogenia.html#pacote-caper"><i class="fa fa-check"></i><b>4.2</b> Pacote caper</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="plotar-caracteristicas-na-filogenia.html"><a href="plotar-caracteristicas-na-filogenia.html"><i class="fa fa-check"></i><b>5</b> Plotar características na filogenia</a></li>
+<li class="chapter" data-level="6" data-path="sinal-filogenetico.html"><a href="sinal-filogenetico.html"><i class="fa fa-check"></i><b>6</b> Sinal filogenético</a></li>
+<li class="chapter" data-level="7" data-path="pgls.html"><a href="pgls.html"><i class="fa fa-check"></i><b>7</b> PGLS</a><ul>
+<li class="chapter" data-level="7.1" data-path="pgls.html"><a href="pgls.html#caper"><i class="fa fa-check"></i><b>7.1</b> Caper</a></li>
+<li class="chapter" data-level="7.2" data-path="pgls.html"><a href="pgls.html#gls"><i class="fa fa-check"></i><b>7.2</b> gls</a></li>
+<li class="chapter" data-level="7.3" data-path="pgls.html"><a href="pgls.html#phylolm"><i class="fa fa-check"></i><b>7.3</b> phylolm</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="contraste-independente.html"><a href="contraste-independente.html"><i class="fa fa-check"></i><b>8</b> Contraste independente</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/paternogbc/eer" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Ecologia Ecolutiva em R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cruzar-dados-e-filogenia" class="section level1">
+<h1><span class="header-section-number">4</span> Cruzar dados e filogenia</h1>
+<p>Pacotes necessários neste capítulo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ape)
+<span class="kw">library</span>(caper)
+<span class="kw">library</span>(geiger)
+<span class="kw">library</span>(sensiPhy)</code></pre></div>
+<p>Carregando dados e Filogenia</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Carregar árvore filogenética: </span>
+arvore &lt;-<span class="st"> </span><span class="kw">read.tree</span>(<span class="st">&quot;filogenia/arvore.tre&quot;</span>)
+
+<span class="co"># Carregar banco de dados:</span>
+dados &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;dados/dados.csv&quot;</span>)
+
+<span class="co"># Confira as variáveis do banco de dados:</span>
+<span class="kw">str</span>(dados)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    71 obs. of  6 variables:
+##  $ Species : Factor w/ 71 levels &quot;Actophilornis_africanus&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...
+##  $ M.Mass  : num  143 186 108 114 151 ...
+##  $ F.Mass  : num  261 216 113 124 164 ...
+##  $ Egg.Mass: num  8.6 22.4 17.9 17.3 23.5 11.2 10.7 9.6 19.3 13.3 ...
+##  $ Cl.size : num  4 4 3.5 4 3.99 3.9 3.9 4 3.7 3.9 ...
+##  $ Mat.syst: Factor w/ 3 levels &quot;MO&quot;,&quot;PA&quot;,&quot;PG&quot;: 2 1 1 1 1 2 1 1 1 1 ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(dados))</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Species</th>
+<th align="right">M.Mass</th>
+<th align="right">F.Mass</th>
+<th align="right">Egg.Mass</th>
+<th align="right">Cl.size</th>
+<th align="left">Mat.syst</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Actophilornis_africanus</td>
+<td align="right">143.2</td>
+<td align="right">260.7</td>
+<td align="right">8.6</td>
+<td align="right">4.00</td>
+<td align="left">PA</td>
+</tr>
+<tr class="even">
+<td align="left">Aphriza_virgata</td>
+<td align="right">186.3</td>
+<td align="right">216.3</td>
+<td align="right">22.4</td>
+<td align="right">4.00</td>
+<td align="left">MO</td>
+</tr>
+<tr class="odd">
+<td align="left">Arenaria_interpres</td>
+<td align="right">108.0</td>
+<td align="right">113.0</td>
+<td align="right">17.9</td>
+<td align="right">3.50</td>
+<td align="left">MO</td>
+</tr>
+<tr class="even">
+<td align="left">Arenaria_melanocephala</td>
+<td align="right">113.6</td>
+<td align="right">124.2</td>
+<td align="right">17.3</td>
+<td align="right">4.00</td>
+<td align="left">MO</td>
+</tr>
+<tr class="odd">
+<td align="left">Bartramia_longicauda</td>
+<td align="right">151.0</td>
+<td align="right">164.0</td>
+<td align="right">23.5</td>
+<td align="right">3.99</td>
+<td align="left">MO</td>
+</tr>
+<tr class="even">
+<td align="left">Calidris_alba</td>
+<td align="right">52.8</td>
+<td align="right">55.4</td>
+<td align="right">11.2</td>
+<td align="right">3.90</td>
+<td align="left">PA</td>
+</tr>
+</tbody>
+</table>
+<p>Este banco de dados faz parte do pacote ‘caper’. Para saber mais detalhes sobre o banco de dados e a filogenia digite no console <code>?shorebird</code></p>
+<div id="manualmente" class="section level2">
+<h2><span class="header-section-number">4.1</span> Manualmente</h2>
+<p>Primeiro associe o nome das espécies ao nome das linhas no bando de dados:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rownames</span>(dados) &lt;-<span class="st"> </span>dados$Species
+<span class="kw">head</span>(dados)</code></pre></div>
+<pre><code>##                                         Species M.Mass F.Mass Egg.Mass
+## Actophilornis_africanus Actophilornis_africanus  143.2  260.7      8.6
+## Aphriza_virgata                 Aphriza_virgata  186.3  216.3     22.4
+## Arenaria_interpres           Arenaria_interpres  108.0  113.0     17.9
+## Arenaria_melanocephala   Arenaria_melanocephala  113.6  124.2     17.3
+## Bartramia_longicauda       Bartramia_longicauda  151.0  164.0     23.5
+## Calidris_alba                     Calidris_alba   52.8   55.4     11.2
+##                         Cl.size Mat.syst
+## Actophilornis_africanus    4.00       PA
+## Aphriza_virgata            4.00       MO
+## Arenaria_interpres         3.50       MO
+## Arenaria_melanocephala     4.00       MO
+## Bartramia_longicauda       3.99       MO
+## Calidris_alba              3.90       PA</code></pre>
+<p>Primeiro utilize a função <code>name.check</code> para verificar se as espécies presentes no banco de dados estão na filogenia e se as espécies presentes na filogenia estão no banco de dados. Ok representa que os dados batem perfeitamente com a filogenia</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">name.check</span>(arvore, dados) </code></pre></div>
+<pre><code>## [1] &quot;OK&quot;</code></pre>
+<p>Caso alguma espécie da tabela de dados não esteja na filogenia ou alguma espécie da filogenia não estaje no bando de dados, esta função irá mostrar quais são essas espécies. Veja o exemplo abaixo (removendo uma espécie da filogenia e uma espécie do bando de dados)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sem a espécie &quot;Catoptrophorus_semipalmatus&quot; na filogenia:</span>
+<span class="kw">name.check</span>(<span class="kw">drop.tip</span>(arvore, <span class="st">&quot;Catoptrophorus_semipalmatus&quot;</span>), dados)</code></pre></div>
+<pre><code>## $tree_not_data
+## character(0)
+## 
+## $data_not_tree
+## [1] &quot;Catoptrophorus_semipalmatus&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Sem a espécie &quot;Catoptrophorus_semipalmatus&quot; nos dados:</span>
+<span class="kw">name.check</span>(arvore, dados[dados$Species !=<span class="st"> &quot;Catoptrophorus_semipalmatus&quot;</span>, ])</code></pre></div>
+<pre><code>## $tree_not_data
+## [1] &quot;Catoptrophorus_semipalmatus&quot;
+## 
+## $data_not_tree
+## character(0)</code></pre>
+<p>Caso o seu banco de dados ou filogenia tenham espécies não congruentes, você precisa cortar essas espécies do banco de dados e/ou da filogenia: Os passos a seguir garantem que os dados e a filogenia estejam congruentes. Apenas utilize esses passos caso <code>name.check()</code> não der “OK”.</p>
+<p>Para ilustrar, vamos criar o banco de dados e uma árvore com alumas espécies faltando:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">arvore2    &lt;-<span class="st"> </span><span class="kw">drop.tip</span>(arvore, <span class="dv">1</span>:<span class="dv">4</span>) <span class="co"># Remove espécies de 1:4 da árvore</span>
+dados2     &lt;-<span class="st"> </span>dados[-(<span class="dv">1</span>:<span class="dv">7</span>), ]       <span class="co"># Remove espécies de 1:7 do bando de dados</span></code></pre></div>
+<p><code>name.check()</code> para detectar as diferenças:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nao.cruza  &lt;-<span class="st"> </span><span class="kw">name.check</span>(arvore2, dados2)
+nao.cruza <span class="co"># Veja o que está faltando na filogenia e no banco de dados:</span></code></pre></div>
+<pre><code>## $tree_not_data
+## [1] &quot;Actophilornis_africanus&quot; &quot;Aphriza_virgata&quot;        
+## [3] &quot;Arenaria_interpres&quot;      &quot;Arenaria_melanocephala&quot; 
+## [5] &quot;Bartramia_longicauda&quot;    &quot;Calidris_alba&quot;          
+## [7] &quot;Calidris_alpina&quot;        
+## 
+## $data_not_tree
+## [1] &quot;Catoptrophorus_semipalmatus&quot; &quot;Tringa_flavipes&quot;            
+## [3] &quot;Tringa_ochropus&quot;             &quot;Tringa_stagnatilis&quot;</code></pre>
+<p>Espécies presentes em ambos (dados/filogenia):</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ambos &lt;-<span class="st"> </span><span class="kw">intersect</span>(dados2$Species, arvore2$tip.label)
+ambos</code></pre></div>
+<p>União das espécies que não cruzam simultaneamente na árvore e nos dados:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">remover &lt;-<span class="st"> </span><span class="kw">c</span>(nao.cruza$tree_not_data, nao.cruza$data_not_tree)
+remover</code></pre></div>
+<pre><code>##  [1] &quot;Actophilornis_africanus&quot;     &quot;Aphriza_virgata&quot;            
+##  [3] &quot;Arenaria_interpres&quot;          &quot;Arenaria_melanocephala&quot;     
+##  [5] &quot;Bartramia_longicauda&quot;        &quot;Calidris_alba&quot;              
+##  [7] &quot;Calidris_alpina&quot;             &quot;Catoptrophorus_semipalmatus&quot;
+##  [9] &quot;Tringa_flavipes&quot;             &quot;Tringa_ochropus&quot;            
+## [11] &quot;Tringa_stagnatilis&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Quantas espécies serão removidas?</span>
+<span class="kw">length</span>(remover)</code></pre></div>
+<pre><code>## [1] 11</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Quantas espécies serão mantidas na filogenia e nos dados:</span>
+<span class="kw">length</span>(ambos)</code></pre></div>
+<pre><code>## [1] 60</code></pre>
+<p>Agora sabemos quais espécies terão que ser excluídas da filogenia e do banco de dados para deixar ambos perfeitamente alinhados. Vamos remover estas espécies.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Corta espécies da árvore:</span>
+arvore2 &lt;-<span class="st"> </span><span class="kw">drop.tip</span>(arvore2, remover)
+<span class="co"># Corta espécies dos dados:</span>
+dados2 &lt;-<span class="st"> </span>dados2[!dados2$Species %in%<span class="st"> </span>remover, ] 
+<span class="co"># Verifica se deu certo:</span>
+<span class="kw">name.check</span>(arvore2, dados2)</code></pre></div>
+<pre><code>## [1] &quot;OK&quot;</code></pre>
+<p>Por fim, verifique se a ordem das espécies é a mesma no banco de dados e na filogenia:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(dados2$Species ==<span class="st"> </span>arvore2$tip.label) ==<span class="st"> </span><span class="kw">length</span>(dados2$Species)</code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>Se der “FALSE” é pq a ordem das espécies não é extamente a mesma entre filogenia e os dados.</p>
+<p>Para colocar filogenia e dados na mesma ordem:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Ordenando a ordem das espécies no banco de dados</span>
+tip.order &lt;-<span class="st"> </span><span class="kw">match</span>(arvore2$tip.label, <span class="kw">rownames</span>(dados2))
+dados2 &lt;-<span class="st"> </span>dados2[tip.order, ]
+<span class="co"># Agora repita o teste (tem que dar &quot;TRUE&quot;)</span>
+<span class="kw">sum</span>(dados2$Species ==<span class="st"> </span>arvore2$tip.label) ==<span class="st"> </span><span class="kw">length</span>(dados2$Species)</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="pacote-caper" class="section level2">
+<h2><span class="header-section-number">4.2</span> Pacote caper</h2>
+<p>O pacote ‘caper’ possui a função <code>comparative.data()</code> que serve para juntar os dados e a filogenia em um único objeto. Essa função <strong>garante</strong> que apenas espécies presentes na filogenia e nos dados serão mantidas no objeto final.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Utilizando a árvore original:
+comp.dados &lt;-<span class="st"> </span><span class="kw">comparative.data</span>(arvore, dados, <span class="st">&#39;Species&#39;</span>)
+<span class="kw">print</span>(comp.dados)</code></pre></div>
+<pre><code>## Comparative dataset of 71 taxa:
+## Phylogeny: arvore 
+##    71 tips, 62 internal nodes
+##    chr [1:71] &quot;Catoptrophorus_semipalmatus&quot; &quot;Tringa_ochropus&quot; ...
+## Data: dados 
+##    $ M.Mass  : num [1:71] 273 75 67.1 80 172 123 142 164 62 50.2 ...
+##    $ F.Mass  : num [1:71] 301.4 85 76 83.7 175 ...
+##    $ Egg.Mass: num [1:71] 39.5 15.5 14 17.4 30.5 22.3 24.5 27.9 13.5 9.4 ...
+##    $ Cl.size : num [1:71] 4 3.9 4 4 3.9 4 4 3.7 4 4 ...
+##    $ Mat.syst: Factor w/ 3 levels &quot;MO&quot;,&quot;PA&quot;,&quot;PG&quot;: 1 1 1 1 1 1 1 1 1 2 ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Com o exemplo criado na seção acima (arvore2; dados 2)
+comp.dados2 &lt;-<span class="st"> </span><span class="kw">comparative.data</span>(arvore2, dados2, <span class="st">&#39;Species&#39;</span>)
+<span class="kw">print</span>(comp.dados2)</code></pre></div>
+<pre><code>## Comparative dataset of 60 taxa:
+## Phylogeny: arvore2 
+##    60 tips, 53 internal nodes
+##    chr [1:60] &quot;Tringa_nebularia&quot; &quot;Tringa_totanus&quot; ...
+## Data: dados2 
+##    $ M.Mass  : num [1:60] 172 123 142 164 62 50.2 32.4 50.8 55.8 31 ...
+##    $ F.Mass  : num [1:60] 175 135 161 176 73 68.1 37.4 61 60.4 34.6 ...
+##    $ Egg.Mass: num [1:60] 30.5 22.3 24.5 27.9 13.5 9.4 6.3 7.5 11.2 8 ...
+##    $ Cl.size : num [1:60] 3.9 4 4 3.7 4 4 4 3.8 3.9 4 ...
+##    $ Mat.syst: Factor w/ 3 levels &quot;MO&quot;,&quot;PA&quot;,&quot;PG&quot;: 1 1 1 1 1 2 2 2 1 1 ...</code></pre>
+<p>Perceba que o objeto ‘comp.dados2’ possui apenas <strong>60 espécies</strong> na filogenia e no banco de dados, o mesmo número de espécies que conseguimos manualmente.</p>
+<p>Para acessar o banco de dados:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comp.dados$data</code></pre></div>
+<p>Para acessar a filogenia:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">comp.dados$phy</code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="arvores-filogneticas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="plotar-caracteristicas-na-filogenia.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/paternogbc/eer/edit/master/03-data_phy.Rmd",
+"text": null
+},
+"download": ["eer.pdf", "eer.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

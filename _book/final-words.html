@@ -25,7 +25,7 @@
 
 <meta name="author" content="Gustavo Brant Paterno">
 
-<meta name="date" content="2016-07-23">
+<meta name="date" content="2016-07-24">
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -107,15 +107,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre o livro</a></li>
 <li class="chapter" data-level="2" data-path="pacotes.html"><a href="pacotes.html"><i class="fa fa-check"></i><b>2</b> Pacotes necessários</a></li>
 <li class="chapter" data-level="3" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html"><i class="fa fa-check"></i><b>3</b> Árvores filognéticas</a><ul>
-<li class="chapter" data-level="3.1" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#como-carregar-um-arvore-filogenetica-no-r"><i class="fa fa-check"></i><b>3.1</b> Como carregar um árvore filogenética no R?</a></li>
-<li class="chapter" data-level="3.2" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#como-visualizar-a-arvore"><i class="fa fa-check"></i><b>3.2</b> Como visualizar a árvore</a></li>
-<li class="chapter" data-level="3.3" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#caracteristicas-da-sua-arvore"><i class="fa fa-check"></i><b>3.3</b> Características da sua árvore</a></li>
-<li class="chapter" data-level="3.4" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#existem-politomias-na-minha-arvore"><i class="fa fa-check"></i><b>3.4</b> Existem politomias na minha árvore?</a></li>
+<li class="chapter" data-level="3.1" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#carregar"><i class="fa fa-check"></i><b>3.1</b> Carregar</a></li>
+<li class="chapter" data-level="3.2" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#visualizar"><i class="fa fa-check"></i><b>3.2</b> Visualizar</a></li>
+<li class="chapter" data-level="3.3" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#caracteristicas"><i class="fa fa-check"></i><b>3.3</b> Características</a></li>
+<li class="chapter" data-level="3.4" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#politomias"><i class="fa fa-check"></i><b>3.4</b> Politomias</a></li>
 <li class="chapter" data-level="3.5" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#como-remover-umavarias-especies-da-arvore"><i class="fa fa-check"></i><b>3.5</b> Como remover uma/várias espécies da árvore?</a></li>
-<li class="chapter" data-level="3.6" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#exporte-sua-arvore"><i class="fa fa-check"></i><b>3.6</b> Exporte sua arvore</a></li>
+<li class="chapter" data-level="3.6" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#salvar-e-exportar"><i class="fa fa-check"></i><b>3.6</b> Salvar e Exportar</a></li>
 <li class="chapter" data-level="3.7" data-path="arvores-filogneticas.html"><a href="arvores-filogneticas.html#como-criar-um-arvore-filogenetica-manualmente"><i class="fa fa-check"></i><b>3.7</b> Como criar um árvore filogenética manualmente?</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="4" data-path="alinhes-dados-com-sua-a-filogenia.html"><a href="alinhes-dados-com-sua-a-filogenia.html"><i class="fa fa-check"></i><b>4</b> Alinhes dados com sua a filogenia</a><ul>
+<li class="chapter" data-level="4.1" data-path="alinhes-dados-com-sua-a-filogenia.html"><a href="alinhes-dados-com-sua-a-filogenia.html#cruzar-dados-e-filogenia"><i class="fa fa-check"></i><b>4.1</b> Cruzar dados e filogenia</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="alinhes-dados-com-sua-a-filogenia.html"><a href="alinhes-dados-com-sua-a-filogenia.html#manualmente"><i class="fa fa-check"></i><b>4.1.1</b> Manualmente</a></li>
+<li class="chapter" data-level="4.1.2" data-path="alinhes-dados-com-sua-a-filogenia.html"><a href="alinhes-dados-com-sua-a-filogenia.html#pacote-caper"><i class="fa fa-check"></i><b>4.1.2</b> Pacote caper</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
 <li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
 <li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
@@ -183,7 +188,7 @@ gitbook.start({
 "link": "https://github.com/paternogbc/eer/edit/master/05-summary.Rmd",
 "text": null
 },
-"download": null,
+"download": ["eer.pdf", "eer.epub"],
 "toc": {
 "collapse": "subsection"
 }
